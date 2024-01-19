@@ -1,0 +1,30 @@
+public class MultilevelInherit {
+    public static void main(String[] args) {
+        B obj1 = new B();
+        obj1.showA();
+        obj1.showB();
+
+        C obj2 = new C();
+        obj2.showA();
+        obj2.showB();
+        obj2.showC();
+    }
+}
+
+class A {
+    public void showA() {
+        System.out.println("Hey there I am in class A");
+    }
+}
+
+class B extends A {
+    public void showB() {
+        System.out.println("Hey there I am in class B");
+    }
+}
+
+class C extends B {
+    public void showC() {
+        System.out.println("Hey there I am in class C");
+    }
+}
