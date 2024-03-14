@@ -5,7 +5,7 @@ public class ReverseString {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter the string: ");
-        String s = sc.next();
+        String s = sc.nextLine();
 
         String res = "";
         String temp = "";
@@ -16,10 +16,10 @@ public class ReverseString {
             }
             else {
                 res = temp + " " + res;
-                System.out.println("Hi");
                 temp = "";
             }
         }
+        res = temp + " " + res;
 
         System.out.println(res);
 
