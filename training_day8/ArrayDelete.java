@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ArrayInsert {
+class ArrayDelete {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number of elements in the array: ");
@@ -18,25 +18,15 @@ public class ArrayInsert {
         }
         System.out.println();
 
-        System.out.print("Enter the position at which element is to be inserted: ");
+        System.out.print("Enter the position of element to be deleted: ");
         int pos = sc.nextInt();
 
-        pos -= 1;
-
-        System.out.println("Enter the element to be inserted at " + pos + ": ");
-        int element = sc.nextInt();
-
-        for (int i = n - 1; i >= pos; i--) {
-            if (i == pos) {
-                arr[i + 1] = arr[i];
-                arr[i] = element;
-            }
-            else {
-                arr[i + 1] = arr[i];
-            }
+        int j = pos - 1;
+        while (j < n - 1) {
+            arr[j] = arr[j + 1];
+            j += 1;
         }
-
-        n += 1;
+        n -= 1;
 
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + "\t");
@@ -44,5 +34,5 @@ public class ArrayInsert {
         System.out.println();
 
         sc.close();
-    }    
+    }
 }

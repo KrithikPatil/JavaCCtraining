@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
-public class ArrayInsert {
+public class BubbleSort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Enter the number of elements in the array: ");
         int n = sc.nextInt();
 
-        int[] arr = new int[100];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
             System.out.print("Enter the element at position " + (i + 1) +": ");
@@ -18,25 +19,15 @@ public class ArrayInsert {
         }
         System.out.println();
 
-        System.out.print("Enter the position at which element is to be inserted: ");
-        int pos = sc.nextInt();
-
-        pos -= 1;
-
-        System.out.println("Enter the element to be inserted at " + pos + ": ");
-        int element = sc.nextInt();
-
-        for (int i = n - 1; i >= pos; i--) {
-            if (i == pos) {
-                arr[i + 1] = arr[i];
-                arr[i] = element;
-            }
-            else {
-                arr[i + 1] = arr[i];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
             }
         }
-
-        n += 1;
 
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + "\t");
@@ -44,5 +35,5 @@ public class ArrayInsert {
         System.out.println();
 
         sc.close();
-    }    
+    }
 }

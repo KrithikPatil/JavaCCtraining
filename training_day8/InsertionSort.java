@@ -1,12 +1,14 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
-public class ArrayInsert {
+public class InsertionSort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Enter the number of elements in the array: ");
         int n = sc.nextInt();
 
-        int[] arr = new int[100];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
             System.out.print("Enter the element at position " + (i + 1) +": ");
@@ -18,25 +20,18 @@ public class ArrayInsert {
         }
         System.out.println();
 
-        System.out.print("Enter the position at which element is to be inserted: ");
-        int pos = sc.nextInt();
+        for (int i = 1; i < n; i++) {
+            int temp = arr[i];
+            int loc = i - 1;
 
-        pos -= 1;
-
-        System.out.println("Enter the element to be inserted at " + pos + ": ");
-        int element = sc.nextInt();
-
-        for (int i = n - 1; i >= pos; i--) {
-            if (i == pos) {
-                arr[i + 1] = arr[i];
-                arr[i] = element;
+            while (loc >= 0 && arr[loc] > temp) {
+                arr[loc + 1] = arr[loc];
+                loc--;
             }
-            else {
-                arr[i + 1] = arr[i];
-            }
+            arr[loc + 1] = temp;
+
+            System.out.println(Arrays.toString(arr));
         }
-
-        n += 1;
 
         for (int i = 0; i < n; i++) {
             System.out.print(arr[i] + "\t");
@@ -44,5 +39,5 @@ public class ArrayInsert {
         System.out.println();
 
         sc.close();
-    }    
+    }
 }
