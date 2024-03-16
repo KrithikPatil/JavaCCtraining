@@ -47,7 +47,7 @@ public class TowerOfHanoi {
             return -1;
         }
 
-        int element = stack[top];
+        // int element = stack[top];
         stack[top] = 0;
         top -= 1;
 

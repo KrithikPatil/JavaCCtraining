@@ -66,5 +66,7 @@ public class ArrayRotate {
         }
 
         System.out.println(Arrays.toString(ar.queue));
+
+        sc.close();
     }
 }
