@@ -6,6 +6,7 @@ public class QueueImplement {
     public int[] queue = new int[CAPACITY];
     public int front = 0;
     public int rear = -1;
+    public static Scanner sc = new Scanner(System.in);
 
     public QueueImplement() {
         Arrays.fill(queue, -1);
@@ -26,8 +27,6 @@ public class QueueImplement {
     }
 
     public void enqueue() {
-        Scanner sc = new Scanner(System.in);
-
         if (full()) {
             System.out.println("The queue is full");
             return ;
@@ -83,7 +82,6 @@ public class QueueImplement {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         QueueImplement qi = new QueueImplement();
 
         int choice = 0;

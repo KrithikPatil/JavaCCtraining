@@ -32,9 +32,7 @@ public class LinkedQueue {
             return ;
         }
 
-        LinkedList ptr = front;
         front = front.next;
-        ptr = null;
     }
 
     public void peekFirst() {

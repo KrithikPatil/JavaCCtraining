@@ -5,6 +5,7 @@ public class StackImplement {
     public int CAPACITY = 10;
     public int[] stack = new int[CAPACITY];
     public int top = -1;
+    public static Scanner sc = new Scanner(System.in);
 
     public boolean full() {
         if (top == CAPACITY - 1) {
@@ -21,8 +22,6 @@ public class StackImplement {
     }
 
     public void push() {
-        Scanner sc = new Scanner(System.in);
-
         if (full()) {
             System.out.println("The stack is full");
             return ;
@@ -71,7 +70,6 @@ public class StackImplement {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         StackImplement si = new StackImplement();
 
         int choice = 0;
@@ -116,7 +114,5 @@ public class StackImplement {
                     break;
             }
         }while(choice <= 5 && choice >= 1);
-
-        sc.close();
     }
 }

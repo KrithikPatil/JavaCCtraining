@@ -30,9 +30,7 @@ public class LinkedStack {
             return ;
         }
 
-        LinkedList ptr = top;
         top = top.next;
-        ptr = null;
     }
 
     public void peek() {

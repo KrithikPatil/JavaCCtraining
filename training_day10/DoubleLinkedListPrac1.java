@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class LinkedListPrac1 {
+public class DoubleLinkedListPrac1 {
     public static Scanner sc = new Scanner(System.in);
     public LinkedList head = new LinkedList();
 
-    LinkedListPrac1() {
+    public DoubleLinkedListPrac1() {
         head = null;
     }
 
@@ -19,10 +19,11 @@ public class LinkedListPrac1 {
         }
         else {
             LinkedList ptr = head;
-            while (ptr.next != null) {
-                ptr = ptr.next;
+            while (ptr.right != null) {
+                ptr = ptr.right;
             }
-            ptr.next = newNode;
+            newNode.left = ptr;
+            ptr.right = newNode;
         }
     }
 
@@ -35,7 +36,8 @@ public class LinkedListPrac1 {
             head = newNode;
         }
         else {
-            newNode.next = head;
+            newNode.right = head;
+            head.left = newNode;
             head = newNode;
         }
     }
@@ -58,10 +60,12 @@ public class LinkedListPrac1 {
         else {
             while (ptr.data != after) {
                 ptr = next_ptr;
-                next_ptr = next_ptr.next;
+                next_ptr = next_ptr.right;
             }
-            newNode.next = next_ptr;
-            ptr.next = newNode;
+            newNode.right = next_ptr;
+            newNode.left = ptr;
+            ptr.right = newNode;
+            next_ptr.left = newNode;
         }
     }
 
@@ -72,12 +76,10 @@ public class LinkedListPrac1 {
         }
 
         LinkedList ptr = head;
-        LinkedList prev_ptr = head;
-        while (ptr.next != null) {
-            prev_ptr = ptr;
-            ptr = ptr.next;
+        while (ptr.right != null) {
+            ptr = ptr.right;
         }
-        prev_ptr.next = null;
+        ptr.left.right = null;
         ptr = null;
     }
 
@@ -87,7 +89,8 @@ public class LinkedListPrac1 {
             return ;
         }
 
-        head = head.next;
+        head = head.right;
+        head.left = null;
     }
 
     public void delAfter() {
@@ -104,10 +107,11 @@ public class LinkedListPrac1 {
 
         while (ptr.data != after) {
             ptr = del_ptr;
-            del_ptr = del_ptr.next;
+            del_ptr = del_ptr.right;
         }
 
-        ptr.next = del_ptr.next;
+        ptr.right = del_ptr.right;
+        del_ptr.right.left = ptr;
         del_ptr = null;
     }
 
@@ -124,10 +128,11 @@ public class LinkedListPrac1 {
         LinkedList del_ptr = head;
         while(del_ptr.data != e) {
             ptr = del_ptr;
-            del_ptr = del_ptr.next;
+            del_ptr = del_ptr.right;
         }
 
-        ptr.next = del_ptr.next;
+        ptr.right = del_ptr.right;
+        del_ptr.right.left = ptr;
         del_ptr = null;
     }
 
@@ -135,14 +140,14 @@ public class LinkedListPrac1 {
         LinkedList ptr = head;
         while (ptr != null) {
             System.out.print(ptr.data + "-->");
-            ptr = ptr.next;
+            ptr = ptr.right;
         }
         System.out.println();
     }
 
     public static void main(String[] args) {
         int choice = 0;
-        LinkedListPrac1 L = new LinkedListPrac1();
+        DoubleLinkedListPrac1 L = new DoubleLinkedListPrac1();
         do {
             System.out.println("1. Add a node at end");
             System.out.println("2. Add a node at begin");
@@ -199,14 +204,17 @@ public class LinkedListPrac1 {
 
 class LinkedList {
     public int data;
-    LinkedList next;
+    LinkedList left;
+    LinkedList right;
 
     LinkedList() {
-        next = null;
+        left = null;
+        right = null;
     }
 
     LinkedList(int data) {
         this.data = data;
-        this.next = null;
+        this.left = null;
+        this.right = null;
     }
 }
